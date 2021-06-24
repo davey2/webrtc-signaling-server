@@ -1,0 +1,66 @@
+{
+	"name": "@davey2/webrtc-signaling-server",
+	"scripts": {
+		"dev": "nodemon src/bin.ts",
+		"build": "tsc -p .",
+		"test": "jest",
+		"prepare": "husky install",
+		"lint": "eslint src",
+		"format": "prettier --write",
+		"semantic-release": "semantic-release"
+	},
+	"main": "dist/server.js",
+	"types": "dist/server.d.ts",
+	"bin": "dist/bin.js",
+	"devDependencies": {
+		"@commitlint/cli": "^12.1.4",
+		"@commitlint/config-conventional": "^12.1.4",
+		"@types/jest": "^26.0.23",
+		"@types/ws": "^7.4.4",
+		"@typescript-eslint/eslint-plugin": "^4.26.1",
+		"@typescript-eslint/parser": "^4.26.1",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^7.28.0",
+		"husky": "^6.0.0",
+		"jest": "^27.0.4",
+		"lint-staged": "^11.0.0",
+		"nodemon": "^2.0.7",
+		"prettier": "2.3.1",
+		"ts-jest": "^27.0.3",
+		"ts-node": "^10.0.0",
+		"typescript": "^4.3.2",
+		"semantic-release": "^17.4.4"
+	},
+	"lint-staged": {
+		"*.{js,json,yaml,md}": "npm run format",
+		"*.ts": [
+			"npm run format",
+			"npm run lint",
+			"npm test /"
+		]
+	},
+	"dependencies": {
+		"commander": "^7.2.0",
+		"ws": "^7.4.6"
+	},
+	"files": [
+		"dist"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/davey2/webrtc-signaling-server.git"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"release": {
+		"branches": [
+			"main"
+		]
+	}
+}
